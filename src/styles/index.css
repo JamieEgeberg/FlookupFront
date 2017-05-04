@@ -1,61 +1,66 @@
-    body {
-      background-color: white;
-      padding: 20px;
-      margin: 0;
-      /*font-family: Helvetica, Arial, sans-serif;*/
-    }
-       
-    ul.header li {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-    }
-    
-    ul.header {
-      /*background-color: #0000A0;*/
-      background-color: lightgray;
-      padding: 0;
-    }
-    
-    ul.header li a {
-      color: #FFF;
-      /*font-weight: bold;*/
-      text-decoration: none;
-      padding: 10px;
-      display: inline-block;
-    }
-    
-    .content {
-      background-color: #EEEEEE;
-      padding: 20px;
-    }
-    
-    .content h2 {
-      padding: 0;
-      margin: 0;
-    }
-    
-    .content li {
-      margin-bottom: 10px;
-    }
-    
-    .active {
-      background-color: lightsteelblue;
-      color: darkred;
-    }
-  
+body {
+    background-color: rgb(125,191,83);
+    padding: 20px;
+    margin: 0;
+    /*font-family: Helvetica, Arial, sans-serif;*/
+}
 
- .msgFromServer {
-   width: 700px;
-   height : 150px;
-   padding: 20px;
-   color: darkgreen;
-   font-size: 2em;
-   background-color: lightgray;
-      
-  }
+ul.header li {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+}
 
+ul.header {
+    /*background-color: #0000A0;*/
+    background-color: lightgray;
+    padding: 0;
+}
 
+ul.header li a {
+    color: #FFF;
+    /*font-weight: bold;*/
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+.content {
+    background-color: #EEEEEE;
+    padding: 20px;
+}
+
+.content h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.content li {
+    margin-bottom: 10px;
+}
+
+.active {
+    background-color: lightsteelblue;
+    color: darkred;
+}
+
+.msgFromServer {
+    width: 700px;
+    height: 150px;
+    padding: 20px;
+    color: darkgreen;
+    font-size: 2em;
+    background-color: lightgray;
+
+}
+
+.logo {
+    height: 250px;
+    margin: 0 auto;
+    display: block;
+}
+
+/*
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -89,4 +94,4 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
+}*/

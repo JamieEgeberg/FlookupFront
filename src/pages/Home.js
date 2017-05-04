@@ -41,7 +41,7 @@ const Home = observer(class Home extends Component {
         Search.getData(this.state.searchParams);
 
         event.preventDefault();
-        hashHistory.push('/somewhere');
+        hashHistory.push('/list');
     };
 
     getToday = () => {
@@ -54,6 +54,7 @@ const Home = observer(class Home extends Component {
     render() {
         return (
             <div>
+                <img className="logo" src="logo2t.png" alt="Logo" />
                 <h3>Welcome to FlookUp, the place to for find the cheapest way for all your flying needs!
                 </h3>
                 <form className="form-inline">
