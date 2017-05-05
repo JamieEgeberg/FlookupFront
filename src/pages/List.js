@@ -5,7 +5,6 @@ import React, {Component} from 'react'
 import {observer} from "mobx-react";
 import {hashHistory} from "react-router";
 import Search from "../stores/Search";
-import Flight from "./Flight";
 
 const List = observer(class List extends Component {
 
@@ -17,12 +16,18 @@ const List = observer(class List extends Component {
     }
 
     displayAirlines = (airlines) => {
+
         return airlines.map((airline) => {
+            if(airline)
             return this.displayAirline(airline);
+            else
+                return "";
         })
     };
 
     displayAirline = (airline) => {
+        console.log("Virker det her?:");
+        console.log(airline);
         return airline.flights.map((flight) => {
             return this.displayFlight(flight, airline.airline);
         })
