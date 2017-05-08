@@ -10,24 +10,25 @@ const List = observer(class List extends Component {
 
     constructor(props) {
         super(props);
+
+        if (!Search.gettingData && Search.airlines.length === 0)
+            hashHistory.push("/home");
+
         this.state = {
             airlines: Search.airlines
         }
     }
 
     displayAirlines = (airlines) => {
-
         return airlines.map((airline) => {
-            if(airline)
-            return this.displayAirline(airline);
+            if (airline)
+                return this.displayAirline(airline);
             else
                 return "";
         })
     };
 
     displayAirline = (airline) => {
-        console.log("Virker det her?:");
-        console.log(airline);
         return airline.flights.map((flight) => {
             return this.displayFlight(flight, airline.airline);
         })
@@ -38,15 +39,22 @@ const List = observer(class List extends Component {
             <div className="panel-body">
                 <p> Flight ID: {flight.flightID} </p>
                 <p> Flight number: {flight.flightNumber} </p>
-                <p> Date: {Date(flight.date)} </p>
+                <p> Date: {String(new Date(flight.date))} </p>
                 <p> Tickets: {flight.numberOfSeats} </p>
                 <p> Total Price: {flight.totalPrice} kr</p>
-                <p> Travel Time: {parseInt(flight.traveltime / 60) + "t" + flight.traveltime % 60 + "m"} </p>
+                <p> Travel Time: {parseInt(flight.traveltime / 60) + "t"
+                + flight.traveltime % 60 + "m"} </p>
                 <p> From: {flight.origin} </p>
                 <p> To: {flight.destination} </p>
                 <p> Airline: {airline} </p>
+                <button id={flight.flightID} className="btn btn-primary"
+                        type="submit" onClick={this.booking}>Book</button>
             </div>
         </div>)
+    };
+
+    booking = (e) => {
+        hashHistory.push('/booking/' + e.currentTarget.id);
     };
 
     render() {

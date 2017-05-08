@@ -54,6 +54,14 @@ ul.header li a {
 
 }
 
+.maxed input {
+    vertical-align: baseline;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
 .logo {
     height: 250px;
     margin: 0 auto;

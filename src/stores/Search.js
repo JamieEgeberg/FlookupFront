@@ -10,6 +10,7 @@ class Search {
     @observable _airlines = [];
     @observable messageFromServer = "";
     @observable errorMessage = "";
+    @observable _gettingData = false;
 
     @action
     setErrorMessage = (err) => {
@@ -18,6 +19,7 @@ class Search {
 
     @action
     getData = (searchParams) => {
+        this._gettingData = true;
         let tempDate=searchParams.date+" 00:00:00";
         let date=new Date(tempDate.replace(/-/g,"/"));
         this.errorMessage = "";
@@ -44,6 +46,7 @@ class Search {
                 else {
                     this._airlines = res;
                     console.log(this._airlines);
+                    this._gettingData = false;
                 }
             })).catch(err => {
             //This is the only way (I have found) to verify server is not running
@@ -57,6 +60,10 @@ class Search {
 
     @computed get airlines() {
         return this._airlines;
+    }
+
+    @computed get gettingData() {
+        return this._gettingData;
     }
 
     @action addBook(airline) {

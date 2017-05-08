@@ -55,7 +55,7 @@ const Home = observer(class Home extends Component {
         return (
             <div>
                 <img className="logo" src="logo2t.png" alt="Logo" />
-                <h3>Welcome to FlookUp, the place to for find the cheapest way for all your flying needs!
+                <h3>Welcome to FlookUp, the place to find the cheapest way for all your flying needs!
                 </h3>
                 <form className="form-inline">
 
@@ -63,6 +63,7 @@ const Home = observer(class Home extends Component {
                         <label htmlFor="from">From:</label>
                         <select id="from"
                                 className="form-control"
+                                value={this.state.searchParams.from}
                                 onChange={this.handleChange}>
                             <option value="CPH">Copenhagen</option>
                             <option value="ATL">Atlanta, USA</option>
@@ -101,7 +102,7 @@ const Home = observer(class Home extends Component {
                     <div className="form-group">
                         <label htmlFor="to">To:</label>
                         <select id="to" className="form-control"
-                                defaultValue="XXX"
+                                value={this.state.searchParams.to}
                                 onChange={this.handleChange}>
                             <option value="XXX">Anywhere</option>
                             <option value="CPH">Copenhagen</option>
@@ -143,7 +144,7 @@ const Home = observer(class Home extends Component {
                         <input
                             className="form-control" id="date" type="date" required
                             min={this.getToday()}
-                            max="2017-12-31"
+                            max="2017-12-31" value={this.state.searchParams.date}
                             onChange={this.handleChange}/>
                     </div>
 
@@ -153,7 +154,7 @@ const Home = observer(class Home extends Component {
                             className="form-control"
                             id="tickets"
                             type="number" required
-                            min="1" max="25"
+                            min="1" max="25" value={this.state.searchParams.tickets}
                             onChange={this.handleChange}/>
                     </div>
 
