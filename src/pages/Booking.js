@@ -18,6 +18,7 @@ const Booking = observer(class List extends Component {
         this.state = {
             flight: flight,
             booking: {
+                airline: flight.airline,
                 flightID: flight.flightID,
                 numberOfSeats: flight.numberOfSeats,
                 reserveeName: "",

@@ -23,9 +23,7 @@ class BookStore {
         options.body = JSON.stringify(booking);
         fetch(URL + "api/reservation/" + booking.flightID, options)
             .then((res) => {
-                if (res.status > 210 || !res.ok) {
-                    errorCode = res.status;
-                }
+                if (res.status > 210 || !res.ok) errorCode = res.status;
                 return res.json();
             })
             .then(action((res) => {  //Note the action wrapper to allow for useStrict
