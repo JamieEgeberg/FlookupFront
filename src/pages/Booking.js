@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {observer} from "mobx-react";
 import {hashHistory} from "react-router";
 import Search from "../stores/Search";
+import BookStore from "../stores/BookStore";
 
 const Booking = observer(class List extends Component {
 
@@ -122,9 +123,8 @@ const Booking = observer(class List extends Component {
     };
 
     book = (event) => {
-        // send data to flookupback.skaarup.io/api/reservation/
-
         event.preventDefault();
+        BookStore.postReservation(this.state.booking);
         hashHistory.push('/list');
     };
 
