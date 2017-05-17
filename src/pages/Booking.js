@@ -56,20 +56,18 @@ const Booking = observer(class List extends Component {
 
     displayFlight = (flight) => {
         return (
-            <div className="col-sm-12">
-                <div className="panel panel-default">
-                    <div className="panel-body">
-                        <p> Flight ID: {flight.flightID} </p>
-                        <p> Flight number: {flight.flightNumber} </p>
-                        <p> Date: {String(new Date(flight.date))} </p>
-                        <p> Tickets: {flight.numberOfSeats} </p>
-                        <p> Total Price: {flight.totalPrice} kr</p>
-                        <p> Travel
-                            Time: {parseInt(flight.traveltime / 60, 10) + "t" + (flight.traveltime % 60 ) + "m"} </p>
-                        <p> From: {flight.origin} </p>
-                        <p> To: {flight.destination} </p>
-                        <p> Airline: {flight.airline} </p>
-                    </div>
+            <div className="card">
+                <div className="content">
+                    <p> Flight ID: {flight.flightID} </p>
+                    <p> Flight number: {flight.flightNumber} </p>
+                    <p> Date: {String(new Date(flight.date))} </p>
+                    <p> Tickets: {flight.numberOfSeats} </p>
+                    <p> Total Price: {flight.totalPrice} kr</p>
+                    <p> Travel
+                        Time: {parseInt(flight.traveltime / 60, 10) + "t" + (flight.traveltime % 60 ) + "m"} </p>
+                    <p> From: {flight.origin} </p>
+                    <p> To: {flight.destination} </p>
+                    <p> Airline: {flight.airline} </p>
                 </div>
             </div>
         )
@@ -77,26 +75,22 @@ const Booking = observer(class List extends Component {
 
     generatePassengerFields = () => {
         return this.state.booking.passengers.map((passenger, index) => {
-            return <div key={index}>
-                <div className="form-group">
-                    <label htmlFor={"firstName" + index}
-                           className="col-sm-4">
-                        {index + 1}: First Name:</label>
-                    <input
-                        className="form-control"
-                        id={"firstName" + index} type="text"
-                        required
-                        value={this.state.booking.passengers[index].firstName}
-                        onChange={this.handleChange}/>
+            return <div key={index} className="grouping">
+                <i>{index+1}:</i>
+                <div className="group">
+                    <label htmlFor={"firstName" + index}>
+                        First Name:</label>
+                    <input id={"firstName" + index} type="text"
+                           required
+                           value={this.state.booking.passengers[index].firstName}
+                           onChange={this.handleChange}/>
                 </div>
-                <div className="form-group">
+                <div className="group">
                     <label htmlFor={"lastName" + index}>
                         Last Name:</label>
-                    <input
-                        className="form-control"
-                        id={"lastName" + index} type="text" required
-                        value={this.state.booking.passengers[index].lastName}
-                        onChange={this.handleChange}/>
+                    <input id={"lastName" + index} type="text" required
+                           value={this.state.booking.passengers[index].lastName}
+                           onChange={this.handleChange}/>
                 </div>
             </div>
         });
@@ -128,7 +122,7 @@ const Booking = observer(class List extends Component {
 
     modalContent = () => {
         if (!BookStore.booking) return;
-        return <div>
+        return <div className="confirmation">
             <h2>Booking Confirmation</h2>
             <p>Flight number: {BookStore.booking.flightNumber} </p>
             <p>Date: {String(new Date(BookStore.booking.date))}</p>
@@ -159,61 +153,49 @@ const Booking = observer(class List extends Component {
 
     render() {
         return (
-            <div className="row">
+            <div>
                 {this.displayFlight(this.state.flight)}
-                <div className="col-sm-12">
-                    <div className="panel panel-default">
-                        <div className="panel-body">
-                            <form className="maxed">
+                <div className="card">
+                    <div className="content flex">
+                        <form className="booking">
+                            <div className="booking">
                                 <fieldset>
                                     <legend>Contact Info</legend>
-                                    <div className="row">
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label htmlFor="name">Full
-                                                    Name:</label>
-                                                <input
-                                                    className="form-control"
-                                                    id="name" type="text"
-                                                    required
-                                                    value={this.state.booking.reserveeName}
-                                                    onChange={this.handleChange}/>
-                                            </div>
+                                    <div className="grouping">
+                                        <div className="group">
+                                            <label htmlFor="name">Full
+                                                Name:</label>
+                                            <input id="name" type="text"
+                                                   required
+                                                   value={this.state.booking.reserveeName}
+                                                   onChange={this.handleChange}/>
                                         </div>
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label
-                                                    htmlFor="phone">Phone:</label>
-                                                <input
-                                                    className="form-control"
-                                                    id="phone" type="text"
-                                                    required
-                                                    value={this.state.booking.reservePhone}
-                                                    onChange={this.handleChange}/>
-                                            </div>
+                                        <div className="group">
+                                            <label
+                                                htmlFor="phone">Phone:</label>
+                                            <input id="phone" type="text"
+                                                   required
+                                                   value={this.state.booking.reservePhone}
+                                                   onChange={this.handleChange}/>
                                         </div>
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label
-                                                    htmlFor="email">Email:</label>
-                                                <input
-                                                    className="form-control"
-                                                    id="email" type="email"
-                                                    required
-                                                    value={this.state.booking.reserveeEmail}
-                                                    onChange={this.handleChange}/>
-                                            </div>
+                                        <div className="group">
+                                            <label
+                                                htmlFor="email">Email:</label>
+                                            <input id="email" type="email"
+                                                   required
+                                                   value={this.state.booking.reserveeEmail}
+                                                   onChange={this.handleChange}/>
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <legend>Contact Info</legend>
+                                    <legend>Passengers</legend>
                                     {this.generatePassengerFields()}
                                 </fieldset>
-                                <button id="book" onClick={this.book}>Book
-                                </button>
-                            </form>
-                        </div>
+                            </div>
+                            <button id="book" onClick={this.book}>Book
+                            </button>
+                        </form>
                     </div>
                 </div>
 

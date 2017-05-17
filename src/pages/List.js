@@ -35,8 +35,8 @@ const List = observer(class List extends Component {
     };
 
     displayFlight = (flight, airline) => {
-        return (<div className="panel panel-default">
-            <div className="panel-body">
+        return (<div className="card">
+            <div className="content">
                 <p> Flight ID: {flight.flightID} </p>
                 <p> Flight number: {flight.flightNumber} </p>
                 <p> Date: {String(new Date(flight.date))} </p>
@@ -47,8 +47,10 @@ const List = observer(class List extends Component {
                 <p> From: {flight.origin} </p>
                 <p> To: {flight.destination} </p>
                 <p> Airline: {airline} </p>
-                <button id={flight.flightID} className="btn btn-primary"
-                        type="submit" onClick={this.booking}>Book</button>
+                <button id={flight.flightID} type="submit"
+                        onClick={this.booking}>
+                    Book
+                </button>
             </div>
         </div>)
     };

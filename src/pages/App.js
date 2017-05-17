@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {observer} from "mobx-react";
-import {hashHistory} from "react-router";
 
 //import {useStrict} from "../stores/useStrict"
 

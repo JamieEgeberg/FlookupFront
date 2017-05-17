@@ -1,65 +1,128 @@
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rgb(125,191,83);
-    padding: 20px;
-    margin: 0;
-    /*font-family: Helvetica, Arial, sans-serif;*/
-}
-
-ul.header li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-}
-
-ul.header {
-    /*background-color: #0000A0;*/
-    background-color: lightgray;
-    padding: 0;
-}
-
-ul.header li a {
+    background-color: rgb(125, 191, 83);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #FFF;
-    /*font-weight: bold;*/
-    text-decoration: none;
-    padding: 10px;
-    display: inline-block;
-}
-
-.content {
-    background-color: #EEEEEE;
     padding: 20px;
-}
-
-.content h2 {
-    padding: 0;
     margin: 0;
 }
 
-.content li {
-    margin-bottom: 10px;
+p {
+    margin: 0 !important;
 }
 
-.active {
-    background-color: lightsteelblue;
-    color: darkred;
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: .4em;
 }
 
-.msgFromServer {
-    width: 700px;
-    height: 150px;
-    padding: 20px;
-    color: darkgreen;
-    font-size: 2em;
-    background-color: lightgray;
-
+.headLine {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
 }
 
-.maxed input {
-    vertical-align: baseline;
+fieldset {
+    border: solid 1px #fff;
 }
 
-.form-control {
-    border-radius: 0;
+.card {
+    margin-bottom: 1em;
+}
+
+.card::before, .card::after {
+    display: block;
+    content: "";
+}
+
+.card > .content {
+    background-color: rgba(255, 255, 255, .3);
+    color: #FFF;
+    text-shadow: #222222;
+    padding: 0 1em;
+}
+
+.card > .content.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card::before {
+    border-left: solid 1em transparent;
+    border-bottom: solid 1em rgba(255, 255, 255, .3);
+}
+
+.card::after {
+    border-right: solid 1em transparent;
+    border-top: solid 1em rgba(255, 255, 255, .3);
+}
+
+.grouping, .group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.group {
+    margin: 0 .4em;
+    flex-grow: 2;
+}
+
+.home.grouping {
+    width: calc(100% - 8em);
+}
+
+.group > label {
+    display: block;
+    background-color: #fff;
+    color: rgba(0, 0, 0, .6);
+    border-left: solid 1px lightgrey;
+    border-top: solid 1px lightgrey;
+    border-bottom: solid 1px lightgrey;
+    height: 23px;
+    font-size: .8em;
+    padding: .3em .2em 0;
+}
+
+input, select, button {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    flex: 2 0 0;
+    color: rebeccapurple;
+    background-color: #fff;
+    border: solid 1px lightgrey;
+    height: 23px;
+    display: block;
+    margin: 0;
+    transition: .4s;
+}
+
+input, select {
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+.home input, select {
+    margin-bottom: 0;
+}
+
+button {
+    max-width: 8em;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+input:focus, select:focus, button:focus, input:hover, select:hover, button:hover {
+    border: solid 1px rebeccapurple;
 }
 
 .logo {
@@ -74,38 +137,21 @@ ul.header li a {
     display: block;
 }
 
-/*
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+.booking {
+    display: flex;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
+
+form.booking {
+    align-items: flex-end;
+    flex-flow: row wrap;
 }
-.form-signin .checkbox {
-  font-weight: normal;
+
+div.booking {
+    flex-direction: column;
+    flex: 2 0 0;
+    width: 100%;
 }
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+
+div.confirmation {
+    color: rebeccapurple !important;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}*/

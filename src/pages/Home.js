@@ -51,115 +51,89 @@ const Home = observer(class Home extends Component {
         return d.getFullYear() + (month > 9 ? "-" + month : "-0" + month) + (day > 9 ? "-" + day : "-0" + day);
     };
 
+    options = (name, def) => {
+        return <select id={name} onChange={this.handleChange}
+                       value={this.state.searchParams[name]}>
+            {def}
+            <option value="CPH">Copenhagen</option>
+            <option value="ATL">Atlanta, USA</option>
+            <option value="PEK">Beijing</option>
+            <option value="ORD">Chicago, USA</option>
+            <option value="LHR">London, Heathrow</option>
+            <option value="HND">Tokyo</option>
+            <option value="LAX">Los Angeles, USA</option>
+            <option value="CDG">Paris</option>
+            <option value="DFW">Dallas/ Fort Worth, USA</option>
+            <option value="FRA">Frankfurt</option>
+            <option value="DEN">Denver, USA</option>
+            <option value="HKG">Hong Kong</option>
+            <option value="MAD">Madrid</option>
+            <option value="DXB">Dubai</option>
+            <option value="JFK">New York, USA</option>
+            <option value="AMS">Amsterdam</option>
+            <option value="CGK">Jakarta</option>
+            <option value="BKK">Bangkok</option>
+            <option value="SIN">Singapore</option>
+            <option value="CAN">Guangzhou, China</option>
+            <option value="PVG">Shanghai, China</option>
+            <option value="IAH">Houston, USA</option>
+            <option value="LAS">Las Vegas, USA</option>
+            <option value="SFO">San Fransisco, USA</option>
+            <option value="PHX">Phoenix, USA</option>
+            <option value="CLT">Charlotte, USA</option>
+            <option value="FCO">Rome</option>
+            <option value="SYD">Sydney</option>
+            <option value="MIA">Miami, USA</option>
+            <option value="MCO">Orlando, USA</option>
+            <option value="MUC">Munich</option>
+        </select>;
+    };
+
     render() {
         return (
             <div>
-                <img className="logo" src="logo2t.png" alt="Logo" />
-                <h3>Welcome to FlookUp, the place to find the cheapest way for all your flying needs!
+                <img className="logo" src="logo2t.png" alt="Logo"/>
+                <h3 className="headLine">Welcome to FlookUp, the place to find
+                    the cheapest way for all your flying needs!
                 </h3>
-                <form className="form-inline">
+                <form className="card">
+                    <div className="content flex">
+                        <div className="grouping home">
+                            <div className="group">
+                                <label htmlFor="from">From:</label>
+                                {this.options("from")}
+                            </div>
 
-                    <div className="form-group">
-                        <label htmlFor="from">From:</label>
-                        <select id="from"
-                                className="form-control"
-                                value={this.state.searchParams.from}
-                                onChange={this.handleChange}>
-                            <option value="CPH">Copenhagen</option>
-                            <option value="ATL">Atlanta, USA</option>
-                            <option value="PEK">Beijing</option>
-                            <option value="ORD">Chicago, USA</option>
-                            <option value="LHR">London, Heathrow</option>
-                            <option value="HND">Tokyo</option>
-                            <option value="LAX">Los Angeles, USA</option>
-                            <option value="CDG">Paris</option>
-                            <option value="DFW">Dallas/ Fort Worth, USA</option>
-                            <option value="FRA">Frankfurt</option>
-                            <option value="DEN">Denver, USA</option>
-                            <option value="HKG">Hong Kong</option>
-                            <option value="MAD">Madrid</option>
-                            <option value="DXB">Dubai</option>
-                            <option value="JFK">New York, USA</option>
-                            <option value="AMS">Amsterdam</option>
-                            <option value="CGK">Jakarta</option>
-                            <option value="BKK">Bangkok</option>
-                            <option value="SIN">Singapore</option>
-                            <option value="CAN">Guangzhou, China</option>
-                            <option value="PVG">Shanghai, China</option>
-                            <option value="IAH">Houston, USA</option>
-                            <option value="LAS">Las Vegas, USA</option>
-                            <option value="SFO">San Fransisco, USA</option>
-                            <option value="PHX">Phoenix, USA</option>
-                            <option value="CLT">Charlotte, USA</option>
-                            <option value="FCO">Rome</option>
-                            <option value="SYD">Sydney</option>
-                            <option value="MIA">Miami, USA</option>
-                            <option value="MCO">Orlando, USA</option>
-                            <option value="MUC">Munich</option>
-                        </select>
+                            <div className="group">
+                                <label htmlFor="to">To:</label>
+                                {this.options("to", <option value="XXX">
+                                    Anywhere</option>)}
+                            </div>
+
+                            <div className="group">
+                                <label htmlFor="date">Flight date:</label>
+                                <input
+                                    id="date" type="date" required
+                                    min={this.getToday()}
+                                    max="2017-12-31"
+                                    value={this.state.searchParams.date}
+                                    onChange={this.handleChange}/>
+                            </div>
+
+                            <div className="group">
+                                <label htmlFor="tickets">Tickets:</label>
+                                <input
+                                    id="tickets"
+                                    type="number" required
+                                    min="1" max="25"
+                                    value={this.state.searchParams.tickets}
+                                    onChange={this.handleChange}/>
+                            </div>
+                        </div>
+                        <button id="search" className="search" type="submit"
+                                onClick={this.searchBtn}>Search
+                        </button>
                     </div>
-
-                    <div className="form-group">
-                        <label htmlFor="to">To:</label>
-                        <select id="to" className="form-control"
-                                value={this.state.searchParams.to}
-                                onChange={this.handleChange}>
-                            <option value="XXX">Anywhere</option>
-                            <option value="CPH">Copenhagen</option>
-                            <option value="ATL">Atlanta, USA</option>
-                            <option value="PEK">Beijing</option>
-                            <option value="ORD">Chicago, USA</option>
-                            <option value="LHR">London, Heathrow</option>
-                            <option value="HND">Tokyo</option>
-                            <option value="LAX">Los Angeles, USA</option>
-                            <option value="CDG">Paris</option>
-                            <option value="DFW">Dallas/ Fort Worth, USA</option>
-                            <option value="FRA">Frankfurt</option>
-                            <option value="DEN">Denver, USA</option>
-                            <option value="HKG">Hong Kong</option>
-                            <option value="MAD">Madrid</option>
-                            <option value="DXB">Dubai</option>
-                            <option value="JFK">New York, USA</option>
-                            <option value="AMS">Amsterdam</option>
-                            <option value="CGK">Jakarta</option>
-                            <option value="BKK">Bangkok</option>
-                            <option value="SIN">Singapore</option>
-                            <option value="CAN">Guangzhou, China</option>
-                            <option value="PVG">Shanghai, China</option>
-                            <option value="IAH">Houston, USA</option>
-                            <option value="LAS">Las Vegas, USA</option>
-                            <option value="SFO">San Fransisco, USA</option>
-                            <option value="PHX">Phoenix, USA</option>
-                            <option value="CLT">Charlotte, USA</option>
-                            <option value="FCO">Rome</option>
-                            <option value="SYD">Sydney</option>
-                            <option value="MIA">Miami, USA</option>
-                            <option value="MCO">Orlando, USA</option>
-                            <option value="MUC">Munich</option>
-                        </select>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="date">Flight date:</label>
-                        <input
-                            className="form-control" id="date" type="date" required
-                            min={this.getToday()}
-                            max="2017-12-31" value={this.state.searchParams.date}
-                            onChange={this.handleChange}/>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="tickets">Tickets:</label>
-                        <input
-                            className="form-control"
-                            id="tickets"
-                            type="number" required
-                            min="1" max="25" value={this.state.searchParams.tickets}
-                            onChange={this.handleChange}/>
-                    </div>
-
-                    <button id="search" className="btn btn-primary" type="submit" onClick={this.searchBtn}>Search</button>
-
                 </form>
             </div>
         )
