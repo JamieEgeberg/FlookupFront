@@ -19,7 +19,7 @@ class BookStore {
         this.messageFromServer = "";
         this._airlines = [];
         let errorCode = 200;
-        const options = fetchHelper.makeOptions("GET", true);
+        const options = fetchHelper.makeOptions("POST", true);
         options.body = JSON.stringify(booking);
         fetch(URL + "api/reservation/" + booking.flightID, options)
             .then((res) => {
