@@ -20,19 +20,19 @@ class Search {
     @action
     getData = (searchParams) => {
         this._gettingData = true;
-        let tempDate=searchParams.date+" 00:00:00";
-        let date=new Date(tempDate.replace(/-/g,"/"));
+        let tempDate = searchParams.date + " 00:00:00";
+        let date = new Date(tempDate.replace(/-/g, "/"));
         this.errorMessage = "";
         this.messageFromServer = "";
         this._airlines = [];
         let errorCode = 200;
-        let sp="/";
-        sp+=searchParams.from+"/";
-        if(searchParams.to!=="XXX" && searchParams.to)sp+=searchParams.to+"/";
-        sp+=date.toISOString()+"/";
-        sp+=searchParams.tickets;
+        let sp = "/";
+        sp += searchParams.from + "/";
+        if (searchParams.to !== "XXX" && searchParams.to) sp += searchParams.to + "/";
+        sp += date.toISOString() + "/";
+        sp += searchParams.tickets;
         const options = fetchHelper.makeOptions("GET", true);
-        fetch(URL + "api/flights"+sp, options)
+        fetch(URL + "api/flights" + sp, options)
             .then((res) => {
                 if (res.status > 210 || !res.ok) {
                     errorCode = res.status;
