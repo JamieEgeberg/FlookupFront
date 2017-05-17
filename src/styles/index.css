@@ -68,6 +68,12 @@ ul.header li a {
     display: block;
 }
 
+.logo2 {
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
 /*
 .form-signin {
   max-width: 330px;

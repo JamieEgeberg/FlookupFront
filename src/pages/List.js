@@ -42,7 +42,7 @@ const List = observer(class List extends Component {
                 <p> Date: {String(new Date(flight.date))} </p>
                 <p> Tickets: {flight.numberOfSeats} </p>
                 <p> Total Price: {flight.totalPrice} kr</p>
-                <p> Travel Time: {parseInt(flight.traveltime / 60) + "t"
+                <p> Travel Time: {parseInt(flight.traveltime / 60, 10) + "t"
                 + flight.traveltime % 60 + "m"} </p>
                 <p> From: {flight.origin} </p>
                 <p> To: {flight.destination} </p>

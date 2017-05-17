@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {observer} from "mobx-react";
 import {hashHistory} from "react-router";
+import Modal, {closeStyle} from "simple-react-modal";
 import Search from "../stores/Search";
 import BookStore from "../stores/BookStore";
 
@@ -17,6 +18,7 @@ const Booking = observer(class List extends Component {
         console.log(flight);
 
         this.state = {
+            bookingResult: BookStore.booking,
             flight: flight,
             booking: {
                 airline: flight.airline,
@@ -119,13 +121,40 @@ const Booking = observer(class List extends Component {
             }
         });
 
-        this.setState({booking: booking});
+        this.setState({
+            booking: booking
+        });
+    };
+
+    modalContent = () => {
+        if (!BookStore.booking) return;
+        return <div>
+            <h2>Booking Confirmation</h2>
+            <p>Flight number: {BookStore.booking.flightNumber} </p>
+            <p>Date: {String(new Date(BookStore.booking.date))}</p>
+            <p>Tickets: {BookStore.booking.numberOfSeats} </p>
+            <p>Travel
+                Time: {parseInt(BookStore.booking.flightTime / 60, 10) + "t" + (BookStore.booking.flightTime % 60 ) + "m"} </p>
+            <p>From: {BookStore.booking.origin} </p>
+            <p>To: {BookStore.booking.destination} </p>
+            <p>Reservee Name: {BookStore.booking.reserveeName} </p>
+            <p>Passengers: {BookStore.booking.passengers.map((p, idx) => {
+                return (idx + 1) + ", " + p.firstName + " " + p.lastName +
+                    (idx < BookStore.booking.passengers.length - 1 ? ", " : "");
+            })}</p>
+            <a style={closeStyle} onClick={this.close}>X</a>
+        </div>;
+    };
+
+    close = () => {
+        this.setState({show: false});
+        hashHistory.push('/home');
     };
 
     book = (event) => {
         event.preventDefault();
         BookStore.postReservation(this.state.booking);
-        hashHistory.push('/list');
+        this.setState({show: true});
     };
 
     render() {
@@ -187,6 +216,10 @@ const Booking = observer(class List extends Component {
                         </div>
                     </div>
                 </div>
+
+                <Modal show={this.state.show} onClose={this.close}>
+                    {this.modalContent()}
+                </Modal>
             </div>
         )
     };
