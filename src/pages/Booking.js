@@ -133,8 +133,7 @@ const Booking = observer(class List extends Component {
             <p>To: {BookStore.booking.destination} </p>
             <p>Reservee Name: {BookStore.booking.reserveeName} </p>
             <p>Passengers: {BookStore.booking.passengers.map((p, idx) => {
-                return (idx + 1) + ", " + p.firstName + " " + p.lastName +
-                    (idx < BookStore.booking.passengers.length - 1 ? ", " : "");
+                return <span><br/>{(idx + 1) + ": " + p.firstName + " " + p.lastName}</span>;
             })}</p>
             <a style={closeStyle} onClick={this.close}>X</a>
         </div>;
